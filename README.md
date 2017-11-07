@@ -6,7 +6,7 @@ TutorS (ติวเตอร์เอส) Section: 3
 - [5730192821-NM](https://github.com/5730192821-NM): 5730192821 ณัฐสิทธิ์ มหากุศลศิริกุล
 - [5730281021-NB](https://github.com/5730281021-NB): 5730281021 นนทัช บุณยมานนท์
 - [5730604021-SL](https://github.com/5730604021-SL): 5730604021 ศุภเสกข์ ลี้สมประสงค์
-- [gitname](https://github.com/): 573xxxxxx name surname
+- [5730688821-AS](https://github.com/5730688821-AS): 5730688821 อัชระพนธ์ ศิลมัฐ
 - [gitname](https://github.com/): 573xxxxxx name surname
 - [gitname](https://github.com/): 573xxxxxx name surname
 - [gitname](https://github.com/): 573xxxxxx name surname
