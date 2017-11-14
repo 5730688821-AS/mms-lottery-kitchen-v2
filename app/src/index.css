@@ -3,3 +3,21 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.Top-navbar {
+  background-color: #2E2E2E;
+  height: 25px;
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #67daf9;
+  font-size: 16px;
+  text-align: left;
+}
+
+.Top-navbar a {
+  text-decoration: none;
+  text-decoration-color: #67daf9;
+  color: #67daf9;
+  font-size: 16px;
+}
