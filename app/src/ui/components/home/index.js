@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import logo from '../../material/react_logo.svg';
+import logo from '../../materials/react_logo.svg';
 import './style.css';
 
 class Home extends Component {
