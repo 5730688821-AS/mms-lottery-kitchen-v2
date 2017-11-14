@@ -8,8 +8,7 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <TopComponent
-        />
+        <TopComponent/>
       <div>
         <Jumbotron>
           <h1 className="display-3">Hello, world!</h1>

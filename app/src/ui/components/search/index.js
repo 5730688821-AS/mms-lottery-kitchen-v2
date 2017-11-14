@@ -3,8 +3,7 @@ import logo from '../../materials/react_logo.svg';
 import male from '../../materials/male_sm.png';
 import female from '../../materials/female_sm.png';
 
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink, Container, Row, Col, Jumbotron, Breadcrumb, BreadcrumbItem, Button, Table, Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink, Container, Row, Col, Jumbotron, Breadcrumb, BreadcrumbItem, Button, Table, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import './style.css';
 
 import TopComponent from '../TopComponent';
@@ -53,7 +52,6 @@ class Search extends Component {
       search: searchList
     })
   }
-
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -61,7 +59,6 @@ class Search extends Component {
   }
 
   // FUNCTION GENERATE COMPONENT
-
   generateHeaderTable(){
     return(
       <tr>
@@ -164,7 +161,7 @@ class Search extends Component {
     )
 
     return (
-      <div className="Search">  
+      <div className="Search">
         <TopComponent
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
