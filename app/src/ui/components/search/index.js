@@ -39,7 +39,7 @@ class Search extends Component {
     this.setState({
       search: isExist === true ? [...this.state.search] :[...this.state.search,temp],
       value: '',
-      url: this.state.search.length === 0 ? this.state.url + urlSearch + temp : this.state.url + '+' + temp,
+      url: this.state.search.length === 0 ? this.state.url + urlSearch + temp : this.state.url + (isExist === true ? '' : '+' + temp),
     })
   }
 
