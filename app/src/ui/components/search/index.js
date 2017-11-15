@@ -48,7 +48,7 @@ class Search extends Component {
       isExist=[...isExist,this.state.search.includes(temp[i])]
       if(!isExist[i]){
         tmp = [...tmp,temp[i]]
-        t = this.state.search.length>0 ? t + '+' + temp[i] : t + temp[i]
+        t = this.state.search.length>0 ? t + '+' + temp[i] : i===0 ? t + temp[i] : t + '+' + temp[i]
       }
     }
     console.log(t)
@@ -113,12 +113,21 @@ class Search extends Component {
   }
 
   toggle(e) {
-    const idx = parseInt(e.target.name)
     let modal = this.state.modal
-    modal[idx]=!modal[idx]
-    this.setState({
-      modal: modal
-    });
+    if(e!==undefined){
+      const idx = parseInt(e.target.name)
+      modal[idx]=!modal[idx]
+      this.setState({
+        modal: modal
+      });
+    } else {
+      for(let i=0;i<modal.length;i++){
+        modal[i]=false;
+      }
+      this.setState({
+        modal: modal
+      })
+    }
   }
 
   // FUNCTION GENERATE COMPONENT
@@ -181,8 +190,8 @@ class Search extends Component {
           <td>
           <div>
             <Button name={index} color="warning" size="sm" onClick={this.toggle}>more info</Button>
-            <Modal isOpen={this.state.modal[parseInt(index)]} toggle={this.toggle}>
-              <ModalHeader toggle={this.toggle}>Information</ModalHeader>
+            <Modal name={index} isOpen={this.state.modal[parseInt(index)]} toggle={this.toggle}>
+              <ModalHeader name={index} toggle={this.toggle}>Information</ModalHeader>
                 <ModalBody>
                   {data.desc}
                 </ModalBody>
