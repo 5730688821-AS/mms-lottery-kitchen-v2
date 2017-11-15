@@ -4,12 +4,12 @@ import male from '../../materials/male_sm.png';
 import female from '../../materials/female_sm.png';
 
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink, Container, Row, Col, Jumbotron, Breadcrumb, BreadcrumbItem, Button, Table, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import axios from 'axios';
 import './style.css';
-
 import TopComponent from '../TopComponent';
 
 
-const urlSearch= 'mongodb://search/';
+const urlSearch= 'http://localhost:3030/query?tags=';
 
 class Search extends Component {
   constructor(props) {
@@ -25,6 +25,7 @@ class Search extends Component {
       value: '',
       search: [],
       url: '',
+      data: {},
     };
   }
 
@@ -42,12 +43,20 @@ class Search extends Component {
     const temp = this.state.value
     let isExist = this.state.search.includes(temp)
     let strSearch = temp
+    let url = this.state.search.length === 0 ? this.state.url + urlSearch + temp : this.state.url + (isExist === true ? '' : '+' + temp)
 
     this.setState({
       search: isExist === true ? [...this.state.search] :[...this.state.search,temp],
       value: '',
-      url: this.state.search.length === 0 ? this.state.url + urlSearch + temp : this.state.url + (isExist === true ? '' : '+' + temp),
+      url: url,
     })
+
+    axios.get(url).then((res) =>{
+      this.setState({
+        data: res,
+      })
+    })
+
   }
 
   handleChange(e){
@@ -74,7 +83,7 @@ class Search extends Component {
 
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      modal: !this.state.modal
     });
   }
 
@@ -129,9 +138,9 @@ class Search extends Component {
               </td>
               <td>
               <div>
-               <Button color="warning" onClick={this.toggle}>{this.props.buttonLabel}</Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                  <ModalHeader toggle={this.toggle}>more info</ModalHeader>
+               <Button color="warning" size="sm" onClick={this.toggle}>more info</Button>
+                <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                  <ModalHeader toggle={this.toggle}>Information</ModalHeader>
                     <ModalBody>
                       This is description.
                     </ModalBody>
@@ -185,6 +194,7 @@ class Search extends Component {
 
   //RENDER
   render() {
+    console.log('222222222')
 
     const searchResultHeader = (
       <Container>
