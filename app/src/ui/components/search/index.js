@@ -17,14 +17,13 @@ class Search extends Component {
     this.handleSubmit=this.handleSubmit.bind(this);
     this.handleChange=this.handleChange.bind(this);
     this.handleClick=this.handleClick.bind(this);
-    // this.renderTag=this.renderTag.bind(this);
+    this.handleReset=this.handleReset.bind(this);
     this.toggle = this.toggle.bind(this);
     this.state = {
-      modal: false,
-      isOpen: false,
+      modal: [],
       value: '',
       search: [],
-      url: '',
+      url: urlSearch,
       data: {},
     };
   }
@@ -43,7 +42,7 @@ class Search extends Component {
     const temp = this.state.value
     let isExist = this.state.search.includes(temp)
     let strSearch = temp
-    let url = this.state.search.length === 0 ? this.state.url + urlSearch + temp : this.state.url + (isExist === true ? '' : '+' + temp)
+    let url = this.state.search.length === 0 ? this.state.url + temp : this.state.url + (isExist === true ? '' : '+' + temp)
 
     this.setState({
       search: isExist === true ? [...this.state.search] :[...this.state.search,temp],
@@ -52,8 +51,13 @@ class Search extends Component {
     })
 
     axios.get(url).then((res) =>{
+      let t=[]
+      for(let i=0;i<res.data.length;i++){
+        t=[...t,false]
+      }
       this.setState({
-        data: res,
+        data: res.data,
+        modal: t,
       })
     })
 
@@ -75,15 +79,35 @@ class Search extends Component {
       strSearch = i === 0 ? strSearch+searchList[i] : strSearch+'+'+searchList[i]
     }
 
+    let url = searchList.length === 0 ? urlSearch : urlSearch+strSearch
+
     this.setState({
       search: searchList,
-      url: searchList.length === 0 ? '' : urlSearch+strSearch
+      url: url
+    })
+
+    axios.get(url).then((res) =>{
+      this.setState({
+        data: res.data,
+      })
     })
   }
 
-  toggle() {
+  handleReset(){
     this.setState({
-      modal: !this.state.modal
+      modal: [],
+      search: [],
+      url: urlSearch,
+      data: {},
+    })
+  }
+
+  toggle(e) {
+    const idx = parseInt(e.target.name)
+    let modal = this.state.modal
+    modal[idx]=!modal[idx]
+    this.setState({
+      modal: modal
     });
   }
 
@@ -103,55 +127,69 @@ class Search extends Component {
   }
 
   generateSearchResult(){
-    console.log(this.state)
-    let activeDay = [true,false,true,false,true,false,false]
-    let course='Software Engineering'
-    let location='Siam Center'
-    let cost='250 ฿/hr'
     const day = ['MO','TU','WE','TH','FR','SA','SU']
-    let star= '5.0'
-    let elem = []
+    
 
-    day.map((day,index) => {
-      elem=[
-        ...elem,
-        <PaginationItem key={index} active={activeDay[index]}>
-          <PaginationLink href="#">
-            {day}
-          </PaginationLink>
-        </PaginationItem>
+    let tableGen =[]
+    if(this.state.data.length>0){
+
+    this.state.data.map((data,index) => {
+
+      let elem = []
+      let activeDay = [false,false,false,false,false,false,false]
+      for(let i=0;i<data.adays[0].length;i++){
+        activeDay[data.adays[0][i]]=true;
+      }
+      
+      day.map((day,idx) => {
+        elem=[
+          ...elem,
+          <PaginationItem key={idx} active={activeDay[index]}>
+            <PaginationLink href="#">
+              {day}
+            </PaginationLink>
+          </PaginationItem>
+        ]
+      })
+
+      tableGen=[
+        ...tableGen,
+        (<tr key={data._id}>
+          <td>{data.cname_en}</td>
+          <td>{data.loc}</td>
+          <td>{data.cost + '250 ฿/hr'}</td>
+          <td><img width="25px" height="25px" src={data.gender === 'male' ? male: female} /></td>
+          <td>
+            <Pagination size="sm">
+              {elem}
+            </Pagination>
+          </td>
+          <td>
+            {data.review}
+          </td>
+          <td>
+          <div>
+            <Button name={index} color="warning" size="sm" onClick={this.toggle}>more info</Button>
+            <Modal isOpen={this.state.modal[parseInt(index)]} toggle={this.toggle}>
+              <ModalHeader toggle={this.toggle}>Information</ModalHeader>
+                <ModalBody>
+                  {data.desc}
+                </ModalBody>
+              <ModalFooter>
+                <Button name={index} color="primary" onClick={this.toggle}>Book</Button>{' '}
+                <Button name={index} color="secondary" onClick={this.toggle}>Cancel</Button>
+              </ModalFooter>
+            </Modal>
+          </div>
+          </td>
+        </tr>),
       ]
+
     })
+    }
+
     return(
-            <tr>
-              <td>{course}</td>
-              <td>{location}</td>
-              <td>{cost}</td>
-              <td><img width="25px" height="25px" src={male} /></td>
-              <td>
-                <Pagination size="sm">
-                  {elem}
-                </Pagination>
-              </td>
-              <td>
-                {star}
-              </td>
-              <td>
-              <div>
-               <Button color="warning" size="sm" onClick={this.toggle}>more info</Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                  <ModalHeader toggle={this.toggle}>Information</ModalHeader>
-                    <ModalBody>
-                      This is description.
-                    </ModalBody>
-                  <ModalFooter>
-                    <Button color="primary" onClick={this.toggle}>Book</Button>{' '}
-                    <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                  </ModalFooter>
-                </Modal>
-              </div>
-              </td>
-            </tr>
+            tableGen
           )
   }
 
@@ -185,7 +223,7 @@ class Search extends Component {
           </CardBody>
           <br/>
         </Card>
-        <br/><Button size= "sm">Reset</Button>
+        <br/><Button onClick={this.handleReset} size= "sm">Reset</Button>
         <br/>
       </Col>
     )
@@ -194,7 +232,6 @@ class Search extends Component {
 
   //RENDER
   render() {
-    console.log('222222222')
 
     const searchResultHeader = (
       <Container>
@@ -222,7 +259,7 @@ class Search extends Component {
           <Row>
             <Col xs= "10">
               <Row><br /></Row>
-              <Row><Col xs="3"><h5> 50 course results </h5></Col></Row>
+              <Row><Col xs="3"><h5> {this.state.data.length>0 ? this.state.data.length : '0'} course results </h5></Col></Row>
               <Row><br /></Row>
               <Table responsive>
                 <thead>
@@ -230,55 +267,6 @@ class Search extends Component {
                 </thead>
                 <tbody>
                   {this.generateSearchResult()}
-                  <tr>
-                    <td>Digital Photo</td>
-                    <td>MBK</td>
-                    <td>500 ฿/hr</td>
-                    <td><img width="25px" height="25px" src={female} /></td>
-                    <td>
-                      <Pagination size="sm">
-                        <PaginationItem>
-                          <PaginationLink href="#">
-                            MO
-                          </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                          <PaginationLink href="#">
-                            TU
-                          </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                          <PaginationLink href="#">
-                            WE
-                          </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                          <PaginationLink href="#">
-                            TH
-                          </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                          <PaginationLink href="#">
-                            FR
-                          </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem active>
-                          <PaginationLink href="#">
-                            SA
-                          </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem active>
-                          <PaginationLink href="#">
-                            SU
-                          </PaginationLink>
-                        </PaginationItem>
-                      </Pagination>
-                    </td>
-                    <td>4.5</td>
-                    <td>
-                      <Button size="sm" color="warning">more info</Button>
-                    </td>
-                  </tr>
                 </tbody>
               </Table>
             </Col>
