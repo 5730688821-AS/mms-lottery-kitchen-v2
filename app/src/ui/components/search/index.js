@@ -46,7 +46,7 @@ class Search extends Component {
     let t=''
     for(let i=0;i<temp.length;i++){
       isExist=[...isExist,this.state.search.includes(temp[i])]
-      if(!isExist[i]){
+      if(!isExist[i] && !tmp.includes(temp[i])){
         tmp = [...tmp,temp[i]]
         t = this.state.search.length>0 ? t + '+' + temp[i] : i===0 ? t + temp[i] : t + '+' + temp[i]
       }
@@ -250,7 +250,7 @@ class Search extends Component {
 
   //RENDER
   render() {
-
+    console.log(this.state)
     const searchResultHeader = (
       <Container>
         <Row><br /></Row>
