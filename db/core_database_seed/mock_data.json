@@ -1,0 +1,50 @@
+[
+    {
+        "cid": "00001",
+        "cname_en": "softwareengineering",
+        "cname_th": "วิศวกรรมซอฟต์แวร์",
+        "adays": ["1234567","16+4","16+4","16+4","16+4","16+4","16+4","16+4"],
+        "gender": "male",
+        "loc": "siam",
+        "cost": 250,
+        "tutor": "Almond GetAse",
+        "tid": "00001",
+        "tel": "0811111111",
+        "email": "almond@se.chula.ac.th",
+        "desc": "Teaching @SiamCenter on everyday 16 - 20 PM",
+        "review": 5.0,
+        "tags": ["software", "se","male","siam","250"]
+    },
+    {
+        "cid": "00002",
+        "cname_en": "digitalphoto",
+        "cname_th": "การถ่ายรูป",
+        "adays": ["123","17+3","17+3","17+3"],
+        "gender": "female",
+        "loc": "mbk",
+        "cost": 500,
+        "tutor": "Betty GetAse",
+        "tid": "00002",
+        "tel": "082222222",
+        "email": "betty@se.chula.ac.th",
+        "desc": "Teaching @MBK 17 - 20 PM",
+        "review": 4.5,
+        "tags": ["photo", "digital","female","mbk","500"]
+    },
+    {
+        "cid": "00003",
+        "cname_en": "math",
+        "cname_th": "คณิตศาสตร์",
+        "adays": ["67","12+8","12+8"],
+        "gender": "male",
+        "loc": "siam",
+        "cost": 300,
+        "tutor": "Caesar GetAse",
+        "tid": "00003",
+        "tel": "0833333333",
+        "email": "caesar@se.chula.ac.th",
+        "desc": "Teaching @Siam",
+        "review": 4.0,
+        "tags": ["math", "คณิตศาสตร์","male","siam","300"]
+    }
+]
