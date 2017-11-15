@@ -29,9 +29,10 @@ class Search extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const temp = this.state.value;
+    const temp = this.state.value
+    let isExist = this.state.search.includes(temp)
     this.setState({
-      search: [...this.state.search,temp],
+      search: isExist === true ? [...this.state.search] :[...this.state.search,temp],
       value: '',
     })
     const query = this.state.url + this.state.value
