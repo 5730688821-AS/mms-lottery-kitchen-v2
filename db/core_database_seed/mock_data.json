@@ -59,8 +59,24 @@
         "tid": "00004",
         "tel": "0833333334",
         "email": "BenJedi@starwar.nabu",
-        "desc": "Teaching to be jedi @Terminal",
+        "desc": "Teaching to be jedi with physic @Terminal 21",
         "review": 3.0,
         "tags": ["physic", "ฟิสิกส์","male","terminal21","350"]
+    },
+    {
+        "cid": "00005",
+        "cname_en": "chemistry",
+        "cname_th": "เคมี",
+        "adays": ["56","19+1","18+2"],
+        "gender": "female",
+        "loc": "terminal21",
+        "cost": 400,
+        "tutor": "padme amidala",
+        "tid": "00005",
+        "tel": "0895555555",
+        "email": "SkywalkerDaughter@starwar.com",
+        "desc": "Teaching to chemistry with princess @Terminal 21",
+        "review": 4.0,
+        "tags": ["physic", "เคมี","female","terminal21","400"]
     }
 ]
