@@ -39,13 +39,18 @@ class Search extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const temp = this.state.value
+    const temp = this.state.value.toLowerCase().split(" ")
     let isExist = this.state.search.includes(temp)
     let strSearch = temp
-    let url = this.state.search.length === 0 ? this.state.url + temp : this.state.url + (isExist === true ? '' : '+' + temp)
+    let t=''
+    for(let i=0;i<temp.length;i++){
+      t = i===0 ? t + temp[i] : t + '+' + temp[i]
+    }
+    console.log(t)
+    let url = this.state.url + t
 
     this.setState({
-      search: isExist === true ? [...this.state.search] :[...this.state.search,temp],
+      search: isExist === true ? [...this.state.search] :[...this.state.search,...temp],
       value: '',
       url: url,
     })
@@ -137,9 +142,12 @@ class Search extends Component {
 
       let elem = []
       let activeDay = [false,false,false,false,false,false,false]
+      console.log(data.adays[0].length)
       for(let i=0;i<data.adays[0].length;i++){
-        activeDay[data.adays[0][i]]=true;
+        activeDay[data.adays[0][i]-1]=true;
       }
+
+      console.log(activeDay)
       
       day.map((day,idx) => {
         elem=[
@@ -157,7 +165,7 @@ class Search extends Component {
         (<tr key={data._id}>
           <td>{data.cname_en}</td>
           <td>{data.loc}</td>
-          <td>{data.cost + '250 ฿/hr'}</td>
+          <td>{data.cost + ' ฿/hr'}</td>
           <td><img width="25px" height="25px" src={data.gender === 'male' ? male: female} /></td>
           <td>
             <Pagination size="sm">
