@@ -57,7 +57,7 @@
         "cost": 350,
         "tutor": "Obiwan Kenobi",
         "tid": "00004",
-        "tel": "0833333334",
+        "tel": "084444444",
         "email": "BenJedi@starwar.nabu",
         "desc": "Teaching to be jedi with physic @Terminal 21",
         "review": 3.0,
@@ -67,7 +67,7 @@
         "cid": "00005",
         "cname_en": "chemistry",
         "cname_th": "เคมี",
-        "adays": ["56","19+1","18+2"],
+        "adays": ["56","19+1","19+1"],
         "gender": "female",
         "loc": "terminal21",
         "cost": 400,
@@ -78,5 +78,21 @@
         "desc": "Teaching to chemistry with princess @Terminal 21",
         "review": 4.0,
         "tags": ["physic", "เคมี","female","terminal21","400"]
+    },
+    {
+        "cid": "00006",
+        "cname_en": "english",
+        "cname_th": "ภาษาอังกฤษ",
+        "adays": ["456","15+5","15+5"],
+        "gender": "male",
+        "loc": "megabangna",
+        "cost": 300,
+        "tutor": "anakin skywalker",
+        "tid": "00006",
+        "tel": "0847777777",
+        "email": "Darth-vader@hotmail.com",
+        "desc": "Teaching to english for fun @Mega bangna",
+        "review": 3.5,
+        "tags": ["english", "ภาษาอังกฤษ","male","megabangna","300"]
     }
 ]
