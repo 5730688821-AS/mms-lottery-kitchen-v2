@@ -1,6 +1,9 @@
 // create an app.js file with the following contents
 var express = require('express');
+var cors = require('cors')
 var app = express();
+
+app.use(cors())
 
 // Mongodb config
 var MongoClient = require('mongodb').MongoClient;
