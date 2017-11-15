@@ -40,17 +40,22 @@ class Search extends Component {
   handleSubmit(e){
     e.preventDefault();
     const temp = this.state.value.toLowerCase().split(" ")
-    let isExist = this.state.search.includes(temp)
+    let isExist = []
+    let tmp = []
     let strSearch = temp
     let t=''
     for(let i=0;i<temp.length;i++){
-      t = i===0 ? t + temp[i] : t + '+' + temp[i]
+      isExist=[...isExist,this.state.search.includes(temp[i])]
+      if(!isExist[i]){
+        tmp = [...tmp,temp[i]]
+        t = this.state.search.length>0 ? t + '+' + temp[i] : t + temp[i]
+      }
     }
     console.log(t)
     let url = this.state.url + t
 
     this.setState({
-      search: isExist === true ? [...this.state.search] :[...this.state.search,...temp],
+      search: [...this.state.search,...tmp],
       value: '',
       url: url,
     })
@@ -142,17 +147,15 @@ class Search extends Component {
 
       let elem = []
       let activeDay = [false,false,false,false,false,false,false]
-      console.log(data.adays[0].length)
       for(let i=0;i<data.adays[0].length;i++){
+        // console.log(data.adays[0][i]-1)
         activeDay[data.adays[0][i]-1]=true;
       }
-
-      console.log(activeDay)
       
       day.map((day,idx) => {
         elem=[
           ...elem,
-          <PaginationItem key={idx} active={activeDay[index]}>
+          <PaginationItem key={idx} active={activeDay[idx]}>
             <PaginationLink href="#">
               {day}
             </PaginationLink>
@@ -240,6 +243,7 @@ class Search extends Component {
 
   //RENDER
   render() {
+    console.log(this.state)
 
     const searchResultHeader = (
       <Container>
