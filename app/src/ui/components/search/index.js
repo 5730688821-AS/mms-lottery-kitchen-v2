@@ -8,6 +8,9 @@ import './style.css';
 
 import TopComponent from '../TopComponent';
 
+
+const urlSearch= 'mongodb://search/';
+
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +23,7 @@ class Search extends Component {
       isOpen: false,
       value: '',
       search: [],
-      url: 'mongodb://search/',
+      url: '',
     };
 
   }
@@ -31,12 +34,13 @@ class Search extends Component {
     e.preventDefault();
     const temp = this.state.value
     let isExist = this.state.search.includes(temp)
+    let strSearch = temp
+
     this.setState({
       search: isExist === true ? [...this.state.search] :[...this.state.search,temp],
       value: '',
+      url: this.state.search.length === 0 ? this.state.url + urlSearch + temp : this.state.url + '+' + temp,
     })
-    const query = this.state.url + this.state.value
-    console.log(query);
   }
 
   handleChange(e){
@@ -49,10 +53,18 @@ class Search extends Component {
     const idx = e.target.name
     let searchList = this.state.search
     searchList.splice(idx,1)
+    
+    let strSearch = ''
+    for(let i=0; i<searchList.length; i++){
+      strSearch = i === 0 ? strSearch+searchList[i] : strSearch+'+'+searchList[i]
+    }
+
     this.setState({
-      search: searchList
+      search: searchList,
+      url: searchList.length === 0 ? '' : urlSearch+strSearch
     })
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -74,6 +86,7 @@ class Search extends Component {
   }
 
   generateSearchResult(){
+    console.log(this.state)
     let activeDay = [true,false,true,false,true,false,false]
     let course='Software Engineering'
     let location='Siam Center'
@@ -167,7 +180,6 @@ class Search extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           value={this.state.value}
-          search={this.state.search}
         />
         {searchResultHeader}
         <hr className="my-2" />

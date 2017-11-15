@@ -3,7 +3,6 @@ import { Form, Input, Navbar, Container, Row, Col, NavbarBrand} from 'reactstrap
 
 export default class TopComponent extends Component {
     render(){
-        console.log(this.props)
         return (
         <Navbar color="inverse" light>
             <Container>
