@@ -8,13 +8,16 @@ var url = "mongodb://core_database:27017/core";
 
 app.listen(3030, function(){
   console.log('Query services is running @port: 3030');
+  console.log('OK!');
 });
 
 // Query API
-app.get('/api', function(req, res) {
+app.get('/query', function(req, res) {
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var query = { tags: { $all: [req.query.tag] } };
+    var keywords = req.query.tags;
+    var query_tags = keywords.split(" ");
+    var query = { tags: { $all: query_tags } };
     db.collection("courses").find(query).toArray(function(err, result) {
       if (err) throw err;
       console.log(result);
