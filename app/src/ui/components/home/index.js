@@ -16,7 +16,7 @@ class Home extends Component {
           <hr className="my-2" />
           <p>จุดเริ่มต้นของการเป็นติวเตอร์เริ่มได้ที่นี่</p>
           <p className="lead">
-            <Button color="primary">ค้นหาติวเตอร์</Button> &nbsp;&nbsp;&nbsp;<Button color="warning">สมัครสมาชิก</Button>
+            <Button href='/search' color="primary">ค้นหาติวเตอร์</Button> &nbsp;&nbsp;&nbsp;<Button color="warning">สมัครสมาชิก</Button>
           </p>
         </Jumbotron>
       </div>
