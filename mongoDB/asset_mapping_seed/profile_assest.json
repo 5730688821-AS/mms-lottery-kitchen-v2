@@ -46,5 +46,21 @@
         "desc": "Teaching @Siam",
         "review": 4.0,
         "tags": ["math", "คณิตศาสตร์","male","siam","300"]
+    },
+    {
+        "cid": "00004",
+        "cname_en": "physic",
+        "cname_th": "ฟิสิกส์",
+        "adays": ["45","18+2","18+2"],
+        "gender": "male",
+        "loc": "terminal21",
+        "cost": 350,
+        "tutor": "Obiwan Kenobi",
+        "tid": "00004",
+        "tel": "0833333334",
+        "email": "BenJedi@starwar.nabu",
+        "desc": "Teaching to be jedi @Terminal",
+        "review": 3.0,
+        "tags": ["physic", "ฟิสิกส์","male","terminal21","350"]
     }
 ]
