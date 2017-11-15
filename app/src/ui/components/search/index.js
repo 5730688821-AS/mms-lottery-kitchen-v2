@@ -39,7 +39,7 @@ class Search extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const temp = this.state.value.toLowerCase().split(" ")
+    const temp = this.state.value.toLowerCase().split(/(\s+)/).filter((e)=>e.trim().length>0)
     let isExist = []
     let tmp = []
     let strSearch = temp
@@ -51,7 +51,6 @@ class Search extends Component {
         t = this.state.search.length>0 ? t + '+' + temp[i] : i===0 ? t + temp[i] : t + '+' + temp[i]
       }
     }
-    console.log(t)
     let url = this.state.url + t
 
     this.setState({
@@ -157,7 +156,6 @@ class Search extends Component {
       let elem = []
       let activeDay = [false,false,false,false,false,false,false]
       for(let i=0;i<data.adays[0].length;i++){
-        // console.log(data.adays[0][i]-1)
         activeDay[data.adays[0][i]-1]=true;
       }
       
@@ -252,7 +250,6 @@ class Search extends Component {
 
   //RENDER
   render() {
-    console.log(this.state)
 
     const searchResultHeader = (
       <Container>
