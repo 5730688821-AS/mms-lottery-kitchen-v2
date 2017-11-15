@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 
-import { Container, Row, Col, Form, Input, Jumbotron, Button } from 'reactstrap';
+import { Container, Row, Col, Form, Input, Jumbotron, Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import './style.css';
 import TopComponent from '../TopComponent';
 
@@ -11,19 +11,110 @@ class Home extends Component {
         <TopComponent/>
       <div>
         <Jumbotron>
-          <h1 className="display-3">Hello, world!</h1>
-          <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
+          <h1 className="display-3">ยินดีต้อนรับ!</h1>
+          <p className="lead">Easy access, Reliable, Simplicity.</p>
           <hr className="my-2" />
-          <p>It uses utility classes for typgraphy and spacing to space content out within the larger container.</p>
+          <p>จุดเริ่มต้นของการเป็นติวเตอร์เริ่มได้ที่นี่</p>
           <p className="lead">
-            <Button color="primary">Learn More</Button>
+            <Button color="primary">ค้นหาติวเตอร์</Button> &nbsp;&nbsp;&nbsp;<Button color="warning">สมัครสมาชิก</Button>
           </p>
         </Jumbotron>
       </div>
 
         <Container>
         <Row>
-          Hello, welcome home.
+          <Col xs='2'>
+          <div>
+            <Card>
+              <CardBody>
+                <br />
+                <CardTitle>Banner</CardTitle>
+                <br />
+                <br />
+                <CardSubtitle>Hello guys!</CardSubtitle>
+                <CardText>Join me on this site, it's cool site you know.</CardText>
+                <br />
+              </CardBody>
+            </Card>
+          </div>
+          </Col>
+          <Col xs='2'>
+          <div>
+            <Card>
+              <CardBody>
+                <br />
+                <CardTitle>Banner</CardTitle>
+                <br />
+                <br />
+                <CardSubtitle>Hello guys!</CardSubtitle>
+                <CardText>Join me on this site, it's cool site you know.</CardText>
+                <br />
+              </CardBody>
+            </Card>
+          </div>
+          </Col>
+          <Col xs='2'>
+          <div>
+            <Card>
+              <CardBody>
+                <br />
+                <CardTitle>Banner</CardTitle>
+                <br />
+                <br />
+                <CardSubtitle>Hello guys!</CardSubtitle>
+                <CardText>Join me on this site, it's cool site you know.</CardText>
+                <br />
+              </CardBody>
+            </Card>
+          </div>
+          </Col>
+          <Col xs='2'>
+          <div>
+            <Card>
+              <CardBody>
+                <br />
+                <CardTitle>Banner</CardTitle>
+                <br />
+                <br />
+                <CardSubtitle>Hello guys!</CardSubtitle>
+                <CardText>Join me on this site, it's cool site you know.</CardText>
+                <br />
+              </CardBody>
+            </Card>
+          </div>
+          </Col>
+          <Col xs='2'>
+          <div>
+            <Card>
+              <CardBody>
+                <br />
+                <CardTitle>Banner</CardTitle>
+                <br />
+                <br />
+                <CardSubtitle>Hello guys!</CardSubtitle>
+                <CardText>Join me on this site, it's cool site you know.</CardText>
+                <br />
+              </CardBody>
+            </Card>
+          </div>
+          </Col>
+          <Col xs='2'>
+          <div>
+            <Card>
+              <CardBody>
+                <br />
+                <CardTitle>Banner</CardTitle>
+                <br />
+                <br />
+                <CardSubtitle>Hello guys!</CardSubtitle>
+                <CardText>Join me on this site, it's cool site you know.</CardText>
+                <br />
+              </CardBody>
+            </Card>
+          </div>
+          </Col>
+
+          
         </Row>
           </Container>
       </div>

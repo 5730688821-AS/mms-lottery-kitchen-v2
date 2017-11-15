@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 /* Components */
 import Search from './ui/components/search';
 import Home from './ui/components/home';
+import Example from './ui/components/example';
 
 ReactDOM.render((
     <Router>
@@ -19,6 +20,7 @@ ReactDOM.render((
             <Switch>
                 <Route exact path = "/" component = {Home} />
                 <Route path = "/search" component = {Search} />
+                <Route path = "/ex" component = {Example} />
             </Switch>
         </div>
     </Router>

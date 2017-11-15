@@ -2,8 +2,9 @@ import React, { PropTypes, Component } from 'react';
 import logo from '../../materials/react_logo.svg';
 import male from '../../materials/male_sm.png';
 import female from '../../materials/female_sm.png';
+import brown from '../../materials/brown.png';
 
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink, Container, Row, Col, Jumbotron, Breadcrumb, BreadcrumbItem, Button, Table, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink, Container, Row, Col, Jumbotron, Breadcrumb, BreadcrumbItem, Button, Table, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink, Modal, ModalHeader, ModalBody, ModalFooter, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import axios from 'axios';
 import './style.css';
 import TopComponent from '../TopComponent';
@@ -31,11 +32,12 @@ class Search extends Component {
   //FUNCTION CONTROL
 
   // toggle control
+
   toggle() {
     this.setState({
       modal: !this.state.modal
     });
-  }
+  }    
 
   handleSubmit(e){
     e.preventDefault();
@@ -189,12 +191,33 @@ class Search extends Component {
           <div>
             <Button name={index} color="warning" size="sm" onClick={this.toggle}>more info</Button>
             <Modal name={index} isOpen={this.state.modal[parseInt(index)]} toggle={this.toggle}>
-              <ModalHeader name={index} toggle={this.toggle}>Information</ModalHeader>
+              <ModalHeader name={index} toggle={this.toggle}>
+              <font size='2' color='#4d5b68'> Offer id: {data.cid}</font> <br />
+                {data.cname_en} - {data.cname_th} <br /> <font size='4'>ระดับ: {data.level}</font>
+                
+              </ModalHeader>
                 <ModalBody>
-                  {data.desc}
+                <Container>
+                <Row>
+                
+                <Col xs= "7">
+                  ผู้สอน: <b>{data.tutor}</b>
+                  <font size='2' color='#4d5b68'> ({data.tid})</font><br />
+                  <br />
+                  <br />
+                  <u>ข้อมูลติดต่อ</u><br />
+                  {data.email}<br />
+                  โทรศัพท์: {data.tel} <br /><br />
+                </Col>
+                <Col xs= "4">
+                <img width="140px" height="150px" src={brown} />
+                </Col>
+                </Row>
+                </Container>
+                  <center><i><font size = '2' color='#4d5b68'>{data.desc}</font></i></center>
                 </ModalBody>
               <ModalFooter>
-                <Button name={index} color="primary" onClick={this.toggle}>Book</Button>{' '}
+                <Button name={index} color="primary" onClick={this.toggle}>Book Now</Button>{' '}
                 <Button name={index} color="secondary" onClick={this.toggle}>Cancel</Button>
               </ModalFooter>
             </Modal>
@@ -256,9 +279,24 @@ class Search extends Component {
         <Row><br /></Row>
         <Row>
           <br />
-          <Col xs="3">
-            <font size='3' color='#4d5b68'> Search Result </font>
-          </Col>
+          <Col xs="1"></Col>
+            <font size='3' color='#4d5b68'> Tags Helper:&nbsp;&nbsp;</font> 
+            <div>
+              <Button size = 'sm'>สยาม</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>MBK</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>คณิตศาสตร์</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>English</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>ม.ปลาย</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>female</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>ผู้ชาย</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>สามย่าน</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>SE</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>จันทร์</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>ทุกวัน</Button>&nbsp;&nbsp;&nbsp;
+              <Button size = 'sm'>วันหยุด</Button>&nbsp;&nbsp;&nbsp;
+              
+            </div>
+          
         </Row>
       </Container>
     )

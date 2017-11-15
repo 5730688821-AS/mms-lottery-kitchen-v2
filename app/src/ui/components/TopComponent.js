@@ -19,8 +19,8 @@ export default class TopComponent extends Component {
                                 onChange={this.props.handleChange}
                             />
                         </Form>
-                        <NavbarBrand href="/search"><font size ='3' color ='#c8c9cb'> &nbsp;&nbsp;&nbsp; Review </font></NavbarBrand>
-                        <NavbarBrand href="/search"><font size ='3' color ='#c8c9cb'> About Us </font></NavbarBrand>
+                        <NavbarBrand href="/search"><font size ='3' color ='#c8c9cb'> &nbsp;&nbsp;&nbsp; Search </font></NavbarBrand>
+                        <NavbarBrand href="/search"><font size ='3' color ='#c8c9cb'></font></NavbarBrand>
                     </Row>
                     </Col>
                 </Row>
