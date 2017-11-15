@@ -3,7 +3,7 @@ import logo from '../../materials/react_logo.svg';
 import male from '../../materials/male_sm.png';
 import female from '../../materials/female_sm.png';
 
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink, Container, Row, Col, Jumbotron, Breadcrumb, BreadcrumbItem, Button, Table, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink, Container, Row, Col, Jumbotron, Breadcrumb, BreadcrumbItem, Button, Table, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './style.css';
 
 import TopComponent from '../TopComponent';
@@ -20,15 +20,22 @@ class Search extends Component {
     // this.renderTag=this.renderTag.bind(this);
     this.toggle = this.toggle.bind(this);
     this.state = {
+      modal: false,
       isOpen: false,
       value: '',
       search: [],
       url: '',
     };
-
   }
 
   //FUNCTION CONTROL
+
+  // toggle control
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
 
   handleSubmit(e){
     e.preventDefault();
@@ -80,6 +87,7 @@ class Search extends Component {
         <th><center>Cost</center></th>
         <th><center>Gender</center></th>
         <th><center>Available days</center></th>
+        <th><center>Review</center></th>
         <th></th>
       </tr>
     )
@@ -92,6 +100,7 @@ class Search extends Component {
     let location='Siam Center'
     let cost='250 ฿/hr'
     const day = ['MO','TU','WE','TH','FR','SA','SU']
+    let star= '5.0'
     let elem = []
 
     day.map((day,index) => {
@@ -116,7 +125,22 @@ class Search extends Component {
                 </Pagination>
               </td>
               <td>
-                <Button size="sm" color="warning">more info</Button>
+                {star}
+              </td>
+              <td>
+              <div>
+               <Button color="warning" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                  <ModalHeader toggle={this.toggle}>more info</ModalHeader>
+                    <ModalBody>
+                      This is description.
+                    </ModalBody>
+                  <ModalFooter>
+                    <Button color="primary" onClick={this.toggle}>Book</Button>{' '}
+                    <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                  </ModalFooter>
+                </Modal>
+              </div>
               </td>
             </tr>
           )
@@ -132,7 +156,7 @@ class Search extends Component {
                 <br key={val}/>,<Button
                   key={index}
                   name={index}
-                  color='info'
+                  color='success'
                   size='sm'
                   onClick={this.handleClick}
                 >
@@ -142,7 +166,7 @@ class Search extends Component {
     )
     
     return(
-      <Col xs= "3"> 
+      <Col xs= "2"> 
         <Row><br /></Row>
         <Row><font size='3' color='#4d5b68'> &nbsp;&nbsp;&nbsp; Quering Tags</font><br /></Row>
         <br/>
@@ -152,7 +176,7 @@ class Search extends Component {
           </CardBody>
           <br/>
         </Card>
-        <br/><Button color="danger">Reset</Button> &nbsp;&nbsp;&nbsp; <Button color="info">Re-search</Button>
+        <br/><Button size= "sm">Reset</Button>
         <br/>
       </Col>
     )
@@ -186,7 +210,7 @@ class Search extends Component {
 
         <Container>
           <Row>
-            <Col xs= "9">
+            <Col xs= "10">
               <Row><br /></Row>
               <Row><Col xs="3"><h5> 50 course results </h5></Col></Row>
               <Row><br /></Row>
@@ -240,6 +264,7 @@ class Search extends Component {
                         </PaginationItem>
                       </Pagination>
                     </td>
+                    <td>4.5</td>
                     <td>
                       <Button size="sm" color="warning">more info</Button>
                     </td>
