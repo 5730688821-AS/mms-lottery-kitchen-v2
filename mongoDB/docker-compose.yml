@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+            
+    asset_mapping:
+        image: mongo:latest
+        ports: 
+            - "27017:27017"
+
+    asset_mapping_seed:
+        build: asset_mapping_seed
+        links:
+            - asset_mapping
