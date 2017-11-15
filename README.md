@@ -9,4 +9,4 @@ TutorS (ติวเตอร์เอส) Section: 3
 - [5730059021-KS](https://github.com/5730059021KS): 5730059021 คณิน ศุภสัจญาณกุล
 - [5731022021CA](https://github.com/5731022021CA): 5731022021 ชัชชนก อาศุเวทย์
 - [gitname](https://github.com/5731067221-NN): 5731067221 นิธิรันดร์ นุ่มนนท์
-- [gitname](https://github.com/): 573xxxxxx name surname
+- [gitname](https://github.com/5730688821-AS): 5730688821 Ascharapon Sinlamuth
