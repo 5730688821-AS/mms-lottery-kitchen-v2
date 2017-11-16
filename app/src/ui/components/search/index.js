@@ -19,6 +19,7 @@ class Search extends Component {
     this.handleChange=this.handleChange.bind(this);
     this.handleClick=this.handleClick.bind(this);
     this.handleReset=this.handleReset.bind(this);
+    this.handleClickHelper=this.handleClickHelper.bind(this);
     this.toggle = this.toggle.bind(this);
     this.state = {
       modal: [],
@@ -60,6 +61,29 @@ class Search extends Component {
       value: '',
       url: url,
     })
+    
+    axios.get(url).then((res) =>{
+      let t=[]
+      for(let i=0;i<res.data.length;i++){
+        t=[...t,false]
+      }
+      this.setState({
+        data: res.data,
+        modal: t,
+      })
+    })
+    
+  }
+  
+  handleClickHelper(e){
+    console.log(e.target)
+    let tmp= e.target.name
+    let t = this.state.search.length > 0 ? '+' + tmp : tmp
+    let url = this.state.url + t
+    this.setState({
+      search: this.state.search.includes(e.target.name) ? [...this.state.search] : [...this.state.search,tmp],
+      url: url,
+    })
 
     axios.get(url).then((res) =>{
       let t=[]
@@ -71,7 +95,6 @@ class Search extends Component {
         modal: t,
       })
     })
-
   }
 
   handleChange(e){
@@ -103,6 +126,7 @@ class Search extends Component {
       })
     })
   }
+
 
   handleReset(){
     this.setState({
@@ -282,18 +306,18 @@ class Search extends Component {
           <Col xs="1"></Col>
             <font size='3' color='#4d5b68'> Tags Helper:&nbsp;&nbsp;</font> 
             <div>
-              <Button size = 'sm'>สยาม</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>MBK</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>คณิตศาสตร์</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>English</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>ม.ปลาย</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>female</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>ผู้ชาย</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>สามย่าน</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>SE</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>จันทร์</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>ทุกวัน</Button>&nbsp;&nbsp;&nbsp;
-              <Button size = 'sm'>วันหยุด</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='สยาม' onClick={this.handleClickHelper} size = 'sm'>สยาม</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='MBK' onClick={this.handleClickHelper} size = 'sm'>MBK</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='คณิตศาสตร์' onClick={this.handleClickHelper} size = 'sm'>คณิตศาสตร์</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='English' onClick={this.handleClickHelper} size = 'sm'>English</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='ม.ปลาย' onClick={this.handleClickHelper} size = 'sm'>ม.ปลาย</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='female' onClick={this.handleClickHelper} size = 'sm'>female</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='ผู้ชาย' onClick={this.handleClickHelper} size = 'sm'>ผู้ชาย</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='สามย่าน' onClick={this.handleClickHelper} size = 'sm'>สามย่าน</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='SE' onClick={this.handleClickHelper} size = 'sm'>SE</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='จันทร์' onClick={this.handleClickHelper} size = 'sm'>จันทร์</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='ทุกวัน' onClick={this.handleClickHelper} size = 'sm'>ทุกวัน</Button>&nbsp;&nbsp;&nbsp;
+              <Button name='วันหยุด' onClick={this.handleClickHelper} size = 'sm'>วันหยุด</Button>&nbsp;&nbsp;&nbsp;
               
             </div>
           
