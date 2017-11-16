@@ -81,7 +81,7 @@ class Search extends Component {
     let t = this.state.search.length > 0 ? '+' + tmp : tmp
     let url = this.state.url + t
     this.setState({
-      search: this.state.search.includes(e.target.name) ? [...this.state.search] : [...this.state.search,tmp],
+      search: this.state.search.includes(tmp) ? [...this.state.search] : [...this.state.search,tmp],
       url: url,
     })
 
