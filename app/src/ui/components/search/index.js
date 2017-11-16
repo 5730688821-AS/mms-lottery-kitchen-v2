@@ -77,7 +77,7 @@ class Search extends Component {
   
   handleClickHelper(e){
     console.log(e.target)
-    let tmp= e.target.name
+    let tmp= e.target.name.toLowerCase()
     let t = this.state.search.length > 0 ? '+' + tmp : tmp
     let url = this.state.url + t
     this.setState({
