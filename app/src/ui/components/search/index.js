@@ -1,16 +1,11 @@
-import React, { PropTypes, Component } from 'react';
-import logo from '../../materials/react_logo.svg';
+import React, { Component } from 'react';
 import male from '../../materials/male_sm.png';
 import female from '../../materials/female_sm.png';
 import brown from '../../materials/brown.png';
 
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavLink, Container, Row, Col, Jumbotron, Breadcrumb, BreadcrumbItem, Button, Table, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink, Modal, ModalHeader, ModalBody, ModalFooter, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
-import axios from 'axios';
+import { Container, Row, Col, Button, Table, Card, CardBody, Pagination, PaginationItem, PaginationLink, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './style.css';
 import TopComponent from '../TopComponent';
-
-
-const urlSearch= 'http://localhost:3030/query?tags=';
 
 export default class Search extends Component {
   render() {
