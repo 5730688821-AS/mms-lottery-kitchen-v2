@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Search from './ui/components/search';
 import Home from './ui/components/home';
 import Example from './ui/components/example';
+import TopComponent from './ui/components/TopComponent';
 import NotFound from './ui/components/NotFound'
 
 import axios from 'axios';
