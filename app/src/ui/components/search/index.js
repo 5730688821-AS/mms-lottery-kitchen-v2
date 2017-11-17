@@ -144,7 +144,7 @@ const GenerateSearchResult = (props) => {
                 <br />
                 <br />
                 <u>ข้อมูลติดต่อ</u><br />
-                {data.email}<br />
+                {data.username}<br />
                 โทรศัพท์: {data.tel} <br /><br />
               </Col>
               <Col xs= "4">
