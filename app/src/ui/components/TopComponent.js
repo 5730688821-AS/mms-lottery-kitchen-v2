@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Navbar, Container, Row, Col, NavbarBrand, Nav} from 'reactstrap';
+import history from '../../global/history';
 
 export default class TopComponent extends Component {
 
@@ -9,8 +10,7 @@ export default class TopComponent extends Component {
     }
 
     handleOnClick(e){
-        console.log(e.target.id)
-        e.target.id === 'home' ? this.props.children.push('/') : this.props.children.push('/search')
+        e.target.id === 'home' ? history.replace('/') : history.replace('/search')
     }
 
     render(){

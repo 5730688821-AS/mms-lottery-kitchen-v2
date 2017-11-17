@@ -7,13 +7,14 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 /* Route */
-import { BrowserRouter as Router} from 'react-router-dom'
+import { Router } from 'react-router-dom'
 
 /* Components */
 import App from './App'
+import history from './global/history';
 
 ReactDOM.render((
-    <Router>
+    <Router history={history}>
         <App />
     </Router>
 ), document.getElementById('root'));

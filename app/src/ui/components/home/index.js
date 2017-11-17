@@ -10,7 +10,11 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <TopComponent children={this.props.history} />
+        <TopComponent
+          value={this.props.value}
+          handleSubmit={this.props.handleSubmit}
+          handleChange={this.props.handleChange}
+        />
         <MiddleComponent />
         <Banner />
       </div>
