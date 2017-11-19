@@ -5,6 +5,7 @@ import Search from './ui/components/search';
 import Home from './ui/components/home';
 import Example from './ui/components/example';
 import Login from './ui/components/login';
+import Register from './ui/components/register';
 import TopComponent from './ui/components/TopComponent';
 import NotFound from './ui/components/NotFound'
 
@@ -184,6 +185,7 @@ export default class App extends Component {
                         )
                     }} />
                     <Route path = "/login" component = {Login}/>
+                    <Route path = "/register" component = {Register} />
                     <Route path = "/ex" component = {Example} />
                     <Route component = {NotFound} />
                 </Switch>
