@@ -23,4 +23,5 @@ Responsible person | Task | Category
 ดนุภัทร | Query API | Backend
 ดนุภัทร | Registration API | Backend
 ดนุภัทร | Authentication API | Backend
+นนทัช | Logo Design | Resource
 ดนุภัทร | Docker Build | Deployment
