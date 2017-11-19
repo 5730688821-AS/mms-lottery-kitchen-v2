@@ -11,7 +11,7 @@ export default class Register extends Component {
   render() {
     return (
       <div className="Register">
-        <div className="Middle">
+        <div className="Register-Middle">
         <Container>
           <Row>
             <h1>ลงทะเบียนบัญชีผู้ใช้ใหม่</h1>
@@ -57,7 +57,7 @@ export default class Register extends Component {
           </Row>
         </Container>
         </div>
-        <div className="Bottom">
+        <div className="Register-Bottom">
           <img width="100%" height="250px" src={bookshelf} />
         </div>
       </div>

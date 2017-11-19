@@ -16,7 +16,7 @@ export default class AfterRegister extends Component {
       <Alert color="success">
         Success - การสร้างบัญชีสำเร็จ!
       </Alert>
-        <div className="Middle">
+        <div className="AfterRegister-Middle">
         <Container>
           <Row>
           </Row>

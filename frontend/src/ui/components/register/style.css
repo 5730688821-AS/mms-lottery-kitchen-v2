@@ -1,16 +1,12 @@
 .Register {
-  
     text-align: Left;
-    
   }
 
-  .Middle {
+  .Register-Middle {
     padding: 5%;
   }
 
-
-
-.Bottom {
+.Register-Bottom {
       padding: 0%;
 }
   
