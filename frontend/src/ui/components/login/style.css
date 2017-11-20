@@ -1,18 +1,21 @@
 .Login {
     text-align: center;
-    background-color: #222;
-    color: white;
+    background-color: #e4e4e4;
+    color: black;
+    margin-top: -100px;
   }
-.display-3{
-  margin-top: -80px;
-}
+  .little{
+    font-size: 30px;
+  }
+
   .LoginForm{
     text-align: left;
-    outline: #636363;
+    background-color: #b9b9b9;
+    outline: white;
     outline-style:solid;
-    color: white;
+    color: black;
     padding: 1.5%;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left:35%; 
     width:30%;
   }
@@ -21,16 +24,17 @@
   }
   .RegisterForm{
     text-align: center;
-    outline: #636363;
+    background-color: #b9b9b9;
+    outline: white;
     outline-style:solid;
-    color: white;
+    color: black;
     padding: 1.5%;
-    margin-top: 40px;
+    margin-top: 30px;
     margin-left:35%; 
     width:30%;
   }
   .link{
-    color:#5cb85c;
+    color:#1f881f;
   }
 
   
