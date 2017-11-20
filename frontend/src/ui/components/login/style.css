@@ -1,8 +1,9 @@
-.Login {
+.Login-Middle {
+    padding: 5%;
     text-align: center;
-    background-color: #e4e4e4;
     color: black;
     margin-top: -100px;
+    background-color: #f9f9f9;
   }
   .little{
     font-size: 30px;
@@ -10,32 +11,30 @@
 
   .LoginForm{
     text-align: left;
-    background-color: #b9b9b9;
-    outline: white;
-    outline-style:solid;
+    background-color: white;
     color: black;
     padding: 1.5%;
     margin-top: 30px;
     margin-left:35%; 
     width:30%;
+    border-radius: 5px;
+    border: 1.5px solid #d4dbdf;
   }
   .login-button{
     margin-top: 35px;
   }
-  .RegisterForm{
+  .BottomPanel{
     text-align: center;
-    background-color: #b9b9b9;
-    outline: white;
-    outline-style:solid;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1.5px solid #d4dbdf;
     color: black;
     padding: 1.5%;
     margin-top: 30px;
     margin-left:35%; 
     width:30%;
   }
-  .link{
-    color:#1f881f;
-  }
+
 
   
   

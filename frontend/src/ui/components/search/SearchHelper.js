@@ -5,8 +5,6 @@ import { Container, Button, Row, Col } from 'reactstrap';
 // Action
 import { click, fetch } from '../../../actions/searchAction';
 
-
-
 class SearchHelper extends Component{
     constructor(){
         super();

@@ -43,9 +43,10 @@ const MiddleComponent = () => {
   )
 }
 
+//style={ bannerStyle }
 const Banner = () => {
   return (
-    <div style={ bannerStyle }>
+    <div >
     <Container>
       <Row>
         <Col xs='3'>
