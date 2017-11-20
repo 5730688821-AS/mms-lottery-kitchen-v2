@@ -14,9 +14,7 @@ export default class ProgressBar2 extends Component{
         return(
             <Container>
                  <div className="text-center">ขั้นตอนการสมัคร ดำเนินการแล้ว <b>{step} จาก 3</b> ขั้นตอน</div>
-                <Progress color="warning" value= {number}>
-                   สร้าง username และ password สำเร็จ + เลือกประเภทของบัญชีผู้ใช้แล้ว
-                </Progress>
+                <Progress color="warning" value= {number}/>
             </Container>
           )
     }

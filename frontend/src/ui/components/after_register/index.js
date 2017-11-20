@@ -18,9 +18,11 @@ export default class AfterRegister extends Component {
       <div className="AfterRegister">
         <TopComponent />
         <br />
-        <ProgressBar2/>
+        <ProgressBar1/>
+        {/* <ProgressBar2/> */}
         <div className="AfterRegister-Middle">
-          <FillForm/>
+          <TypeSelection/>
+          {/* <FillForm/> */}
         </div>
         <div className="Bottom">
         </div>

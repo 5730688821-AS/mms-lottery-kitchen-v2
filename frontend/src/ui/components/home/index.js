@@ -43,10 +43,12 @@ const MiddleComponent = () => {
   )
 }
 
-//style={ bannerStyle }
+
 const Banner = () => {
   return (
-    <div >
+    // @J. Bug Here!!!!!!!!!!!!!!!!!!!! 
+    /* <div style={ bannerStyle }> */
+    <div>
     <Container>
       <Row>
         <Col xs='3'>
