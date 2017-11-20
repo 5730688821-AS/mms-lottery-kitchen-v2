@@ -10,3 +10,21 @@ TutorS (ติวเตอร์เอส) Section: 3
 - [5731022021CA](https://github.com/5731022021CA): 5731022021 ชัชชนก อาศุเวทย์
 - [5731067221-NN](https://github.com/5731067221-NN): 5731067221 นิธิรันดร์ นุ่มนนท์
 - [573068821-AS](https://github.com/5730688821-AS): 5730688821 Ascharapon Sinlamuth
+
+## Responsible
+Responsible person | Task | Category
+------------ | ------------- | -------------
+ณัฐสิทธิ์ | Overview Architecture | Frontend
+ดนุภัทร | UX/UI - Search | Frontend
+ดนุภัทร | UX/UI - Registration | Frontend
+นิธิรันดร์ | UX/UI - Login | Frontend
+ณัฐสิทธิ์ | Search Engine | Frontend
+ณัฐสิทธิ์ | Registration | Frontend
+ณัฐสิทธิ์ | Authentication | Frontend
+ดนุภัทร | Overview Architecture | Backend
+ดนุภัทร | Database | Backend
+ดนุภัทร | Query API | Backend
+ดนุภัทร | Registration API | Backend
+ดนุภัทร | Authentication API | Backend
+นนทัช | Logo Design | Resource
+ดนุภัทร | Docker Build | Deployment
