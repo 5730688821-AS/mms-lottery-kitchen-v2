@@ -15,10 +15,13 @@ TutorS (ติวเตอร์เอส) Section: 3
 Responsible person | Task | Category
 ------------ | ------------- | -------------
 ณัฐสิทธิ์ | Overview Architecture | Frontend
-ดนุภัทร | UX/UI | Frontend
+ดนุภัทร | UX/UI - Search | Frontend
+ดนุภัทร | UX/UI - Registration | Frontend
+นิธิรันดร์ | UX/UI - Login | Frontend
 ณัฐสิทธิ์ | Search Engine | Frontend
 ณัฐสิทธิ์ | Registration | Frontend
 ณัฐสิทธิ์ | Authentication | Frontend
+ดนุภัทร | Overview Architecture | Backend
 ดนุภัทร | Database | Backend
 ดนุภัทร | Query API | Backend
 ดนุภัทร | Registration API | Backend
