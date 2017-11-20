@@ -17,7 +17,7 @@ export function searchReducer(state = initState, action){
                 ...state,
                 search: action.payload.search,
                 value: action.payload.value,
-                url: action.payload.value
+                url: action.payload.url
             }
         }
         case 'RESET' : {

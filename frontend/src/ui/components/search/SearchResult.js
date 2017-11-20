@@ -64,7 +64,6 @@ class SearchResult extends Component{
                     </PaginationItem>
                     ]
                 })
-                console.log(this.state.modal[parseInt(index, 10)])
                 tableGen=[
                     ...tableGen,
                     (<tr key={data._id}>

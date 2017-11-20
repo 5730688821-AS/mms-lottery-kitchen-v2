@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
+
+import { Container, Row, Col, Table } from 'reactstrap';
 import { connect } from 'react-redux';
-import { Container, Row, Col, Table } from 'reactstrap'
-
-// Style
 import './style.css';
-
-
-//Components
 import TopComponent from '../TopComponent';
 import SearchHelper from './SearchHelper';
 import SearchResult from './SearchResult';
@@ -14,12 +10,10 @@ import QueringTag from './QueringTag';
 
 class Search extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="Search">
         <TopComponent />
         <SearchHelper />
-        <hr className="my-2" />
 
         <Container>
           <Row>
@@ -57,10 +51,12 @@ const GenerateHeaderTable = () =>{
     </tr>
   )
 }
+
 function mapStateToProps(state){
+  console.log(state)
   return {
     data: state.search.data,
   }
 }
 
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps)(Search)

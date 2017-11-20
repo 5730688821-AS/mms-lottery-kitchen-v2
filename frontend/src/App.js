@@ -1,17 +1,15 @@
 import React , { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-// Component
 import Search from './ui/components/search';
 import Home from './ui/components/home';
 import Example from './ui/components/example';
 import Login from './ui/components/login';
 import Register from './ui/components/register';
 import AfterRegister from './ui/components/after_register';
-import TopComponent from './ui/components/TopComponent';
 import NotFound from './ui/components/NotFound'
 
-class App extends Component {
+export default class App extends Component {
     render(){
         return (
             <div>
@@ -28,5 +26,3 @@ class App extends Component {
         )
     }
 }
-
-export default App;

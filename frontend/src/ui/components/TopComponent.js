@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
-import { Form, Input, Navbar, Container, Row, Col, NavbarBrand, } from 'reactstrap';
+import { Form, Input, Navbar, Container, Row, Col, NavbarBrand } from 'reactstrap';
 import history from '../../helpers/history';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { update, submit, fetch } from '../../actions/searchAction';
-
+import { update, fetch, submit} from '../../actions/searchAction';
+import { connect } from 'react-redux'
 class TopComponent extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props)
         this.handleOnClick=this.handleOnClick.bind(this);
         this.handleChange=this.handleChange.bind(this);
         this.handleSubmit=this.handleSubmit.bind(this);
     }
 
-    handleChange(e){
-        this.props.update(e.target.value)
+    handleOnClick(e){
+        if(e.target.id === 'home'){
+            history.push('/')
+        } else if(e.target.id === 'search'){
+            history.push('/search')
+        }
     }
 
     handleSubmit(e){
-        e.preventDefault();
-        console.log(history)
         if(history.location.pathname==='/'){
             history.push('/search')
-            console.log(history)
         }
-        console.log(this.props)
+        e.preventDefault();
         const temp = this.props.value.toLowerCase().split(/(\s+)/).filter((e)=>e.trim().length>0)
         let isExist = []
         let tmp = []
@@ -38,24 +37,18 @@ class TopComponent extends Component {
           }
         }
         let url = this.props.url + t
-
-        this.props.submit(
-            [...this.props.search,...tmp],
-            '',
-            url,
-        );
+        console.log(url)
+        this.props.submit([...this.props.search,...tmp],'',url)
+        this.props.fetch(url)
         
-        this.props.fetch(url);
-      }
-
-    handleOnClick(e){
-        console.log(history)
-        e.target.id === 'home' ? history.push('/') : history.push('/search')
+    }
+    
+    handleChange(e){
+        this.props.update(e.target.value)
     }
 
     render(){
         console.log(this.props)
-        console.log(this.state)
         return (
         <Navbar color="inverse" light>
             <Container>
@@ -83,11 +76,10 @@ class TopComponent extends Component {
 }
 
 function mapStateToProps(state){
-    console.log(state)
-    return {
+    return{
         value: state.search.value,
         search: state.search.search,
-        url: state.search.url
+        url: state.search.url,
     }
 }
 
@@ -99,4 +91,4 @@ function mapDispatchToProps(dispatch){
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TopComponent));
+export default connect(mapStateToProps,mapDispatchToProps)(TopComponent)
