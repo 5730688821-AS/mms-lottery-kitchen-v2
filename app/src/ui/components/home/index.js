@@ -1,6 +1,6 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 
-import { Container, Row, Col, Form, Input, Jumbotron, Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import { Container, Row, Col, Jumbotron, Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import './style.css';
 import TopComponent from '../TopComponent';
 
@@ -10,11 +10,7 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <TopComponent
-          value={this.props.value}
-          handleSubmit={this.props.handleSubmit}
-          handleChange={this.props.handleChange}
-        />
+        <TopComponent />
         <MiddleComponent />
         <Banner />
       </div>
