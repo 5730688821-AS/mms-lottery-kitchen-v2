@@ -1,14 +1,67 @@
 import React, { PropTypes, Component } from 'react';
-import { Form, FormGroup, Label, Input, Container, Row, Col, Button } from 'reactstrap';
+import { Form, FormGroup, FormFeedback, Label, Input, Container, Row, Col, Button } from 'reactstrap';
 import TopComponent from '../TopComponent';
 import axios from 'axios';
 import './style.css';
 import bookshelf from '../../materials/bookshelf.jpg';
 
-import { Link } from 'react-router-dom'
+import history from '../../../helpers/history';
+
+import { Link } from 'react-router-dom';
+
+const regEx = /.+\@.+\..+/;
 
 export default class Register extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      email: '',
+      password: '',
+      isValid: false,
+      isChecked: false,
+    }
+    this.handleEmail=this.handleEmail.bind(this);
+    this.handlePassword=this.handlePassword.bind(this);
+    this.toggle=this.toggle.bind(this);
+    this.handleCreateAccount=this.handleCreateAccount.bind(this);
+  }
+
+  handleEmail(e){
+    this.setState({
+      email: e.target.value,
+    })
+    if(regEx.test(e.target.value)){
+      axios.get('http://localhost:3030/isValid?id=' + e.target.value).then((res) =>{
+        console.log(res.data.result)
+        this.setState({
+          isValid: res.data.result,
+        })
+      })
+    }
+  }
+
+  handlePassword(e){
+    this.setState({
+      password: e.target.value
+    })
+  }
+
+  toggle(){
+    this.setState({
+      isChecked: !this.state.isChecked,
+    })
+  }
+
+  handleCreateAccount(){
+    axios.get('http://localhost:3030/createAccount?id=' + this.state.email + '&pw=' + this.state.password)
+    history.push('/after_register')
+  }
+
   render() {
+    console.log(this.state)
+    console.log(regEx.test(this.state.email))
+    console.log(!this.state.isChecked && this.state.isValid && this.state.password.length>=8)
     return (
       <div>
         <TopComponent />
@@ -37,22 +90,38 @@ export default class Register extends Component {
                 <h5> กรุณากรอกข้อมูลบัญชี </h5>
                 <div className="RegForm">
                 <Label>Email</Label>
-                <Input type="email" name="email" id="id" placeholder="กรุณาใส่อีเมลล์ที่มีอยู่จริง" />
+                <Input style={this.state.email.length > 5 ? (regEx.test(this.state.email) ? this.state.isValid ? {borderColor: '#23a13f'} : {borderColor: '#da3749'} : {borderColor: '#fdc02f'}) : null}
+                  onChange={this.handleEmail}
+                  type="email"
+                  name="email"
+                  id="id"
+                  value={this.state.email}
+                  placeholder="กรุณาใส่อีเมลล์ที่มีอยู่จริง"
+                />
+                <FormFeedback>testtt</FormFeedback>
                 <br />
                 <Label>Password</Label>
-                <Input type="password" name="password" id="pw" placeholder="ความยาวมากกว่า 8 ตัวอักษร" />
+                <Input
+                  style={this.state.password.length === 0 ? null : this.state.password.length >= 8 ? {borderColor: '#23a13f'} : {borderColor: '#fdc02f'}}
+                  onChange={this.handlePassword}
+                  type="password"
+                  name="password"
+                  id="pw"
+                  value={this.state.password}
+                  placeholder="ความยาวมากกว่า 8 ตัวอักษร"
+                />
                 <br />
                 <Row>
                   <Col xs = '6'>
                     <Label check>
-                      <Input type="checkbox" />{' '}{' '}
+                      <Input type="checkbox" onClick={this.toggle} checked={this.state.isChecked} />{' '}{' '}
                         ยอมรับข้อกำหนด<br />
                         การให้บริการ
                       </Label>
 
                   </Col>
                   <Col xs = '6'>
-                    <a href='/after_register'><Button outline color="primary">สมัครใช้บริการ</Button></a>
+                    <Button onClick={this.handleCreateAccount} disabled={!(this.state.isChecked && this.state.isValid && this.state.password.length>=8)} outline color="primary">สมัครใช้บริการ</Button>
                   </Col> 
                 </Row>
               </div>

@@ -10,10 +10,6 @@ export function update(value){
 }
 
 export function submit(search,value,url){
-    console.log('this is action')
-    console.log(search)
-    console.log(value)
-    console.log(url)
     return {
         type: 'SUBMIT',
         payload: {

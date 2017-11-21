@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Navbar, Container, Row, Col, NavbarBrand } from 'reactstrap';
+import { Form, Input, Navbar, Container, Row, Col, NavbarBrand, Nav } from 'reactstrap';
 import history from '../../helpers/history';
 import { update, fetch, submit} from '../../actions/searchAction';
 import { connect } from 'react-redux'
