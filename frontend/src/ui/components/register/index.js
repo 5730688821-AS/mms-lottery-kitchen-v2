@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 
 const regEx = /.+\@.+\..+/;
 
+var id_feedback = 'hello';
+
 export default class Register extends Component {
 
   constructor(){
@@ -77,11 +79,17 @@ export default class Register extends Component {
           <div className="Register-Middle">
           <Container>
             <Row>
-              <h1>ลงทะเบียนบัญชีผู้ใช้ใหม่</h1>
+              <Col xs = '6'>
+                <h1>ลงทะเบียนบัญชีผู้ใช้ใหม่</h1>
+              </Col>
+              <Col xs = '2'/>
+              <Col xs = '4'>
+                <h5>เริ่มต้นสมัครโดยกรอกข้อมูลบัญชีด้านล่างนี้</h5>
+              </Col>
             </Row>
-            <br />
             <Row>
             <Col xs = '8'>
+            <br />
             <h3>ข้อกำหนดในการให้บริการจับคู่ติวเตอร์ TutorS</h3>
             <br />
             <b>ข้อกำหนดการให้บริการเหล่านี้ จะมีผลบังคับใช้กับการใช้งานหน้าเว็บ TutorS ของคุณ</b><br/>
@@ -95,7 +103,6 @@ export default class Register extends Component {
             </Col>
             <Col xs = '4'>
               <FormGroup>
-                <h5> กรุณากรอกข้อมูลบัญชี </h5>
                 <div className="RegForm">
                   <Label>Email</Label>
                   <Input style={this.state.email.length > 5 ? (regEx.test(this.state.email) ? (this.state.isValid ? {borderColor: '#23a13f'} : {borderColor: '#da3749'}) : {borderColor: '#fdc02f'}) : null}
@@ -106,8 +113,7 @@ export default class Register extends Component {
                     value={this.state.email}
                     placeholder="กรุณาใส่อีเมลล์ที่มีอยู่จริง"
                   />
-                  <FormFeedback style={{fontSize: '0.7em'}}>{this.state.email.length > 5 ? (regEx.test(this.state.email) ? (this.state.isValid ? 'สามารถใช้ไอดีนี้ได้' : 'ไอดีถูกใช้แล้ว') : 'กรุณากรอก E-mail ให้ถูกแบบฟอร์ม') : ''}</FormFeedback>
-                  <br />
+                  <FormFeedback style={this.state.email.length > 5 ? (regEx.test(this.state.email) ? (this.state.isValid ? {textAlign: 'right', fontSize: '0.7em', color: '#ffffff00'} : {textAlign: 'right', fontSize: '0.7em', color: '#da3749'}) : {textAlign: 'right', fontSize: '0.7em', color: '#fdc02f'}) : {textAlign: 'right', fontSize: '0.7em', color: '#ffffff00'}}>{this.state.email.length > 5 ? (regEx.test(this.state.email) ? (this.state.isValid ? 'ยินดีด้วยคุณพบข้อความล่องหน' : 'ไอดีนี้ถูกใช้ไปแล้ว') : 'กรุณากรอก E-mail ให้ถูกแบบฟอร์ม') : 'ยินดีด้วยคุณพบข้อความล่องหน'}</FormFeedback>
                   <Label>Password</Label>
                   <Input
                     style={this.state.password.length === 0 ? null : this.state.password.length >= 8 ? {borderColor: '#23a13f'} : {borderColor: '#fdc02f'}}
@@ -118,8 +124,7 @@ export default class Register extends Component {
                     value={this.state.password}
                     placeholder="ความยาวอย่างน้อย 8 ตัวอักษร"
                   />
-                  <FormFeedback style={{fontSize: '0.7em'}}>{this.state.password.length === 0 ? null : this.state.password.length >= 8 ? null : 'รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร'}</FormFeedback>
-                  <br />
+                  <FormFeedback style={this.state.password.length === 0 ? {textAlign: 'right', fontSize: '0.7em', color: '#ffffff00'} : this.state.password.length >= 8 ? {textAlign: 'right', fontSize: '0.7em', color: '#ffffff00'} : {textAlign: 'right', fontSize: '0.7em', color: '#fdc02f'}}>{this.state.password.length === 0 ? 'ยินดีด้วยคุณพบข้อความล่องหน' : this.state.password.length >= 8 ? 'ยินดีด้วยคุณพบข้อความล่องหน' : 'รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร'}</FormFeedback>
                   <Label>Confirm Password</Label>
                   <Input
                     style={this.state.confirmPassword.length === 0 ? null : this.state.password === this.state.confirmPassword ? {borderColor: '#23a13f'} : {borderColor: '#fdc02f'}}
@@ -128,9 +133,9 @@ export default class Register extends Component {
                     name="password"
                     id="pw"
                     value={this.state.confirmPassword}
-                    placeholder="ความยาวอย่างน้อย 8 ตัวอักษร"
+                    placeholder="ตรงกับรหัสผ่านข้างต้น"
                   />
-                  <FormFeedback style={{fontSize: '0.7em'}}>{this.state.confirmPassword.length <= 4 ? null : this.state.password === this.state.confirmPassword ? null : 'กรุณากรอกรหัสผ่านให้ตรงกับรหัสผ่านข้างต้น'}</FormFeedback>
+                  <FormFeedback style={this.state.confirmPassword.length <= 4 ? {textAlign: 'right', fontSize: '0.7em', color: '#ffffff00'} : this.state.password === this.state.confirmPassword ? {textAlign: 'right', fontSize: '0.7em', color: '#ffffff00'} : {textAlign: 'right', fontSize: '0.7em', color: '#fdc02f'}}>{this.state.confirmPassword.length < 8 ? 'ยินดีด้วยคุณพบข้อความล่องหน' : this.state.password === this.state.confirmPassword ? 'ยินดีด้วยคุณพบข้อความล่องหน' : 'กรุณากรอกรหัสผ่านให้ตรงกับรหัสผ่านข้างต้น'}</FormFeedback>
                   <br />
                   <Row>
                     <Col xs = '6'>
@@ -152,7 +157,7 @@ export default class Register extends Component {
           </Container>
           </div>
           <div className="Register-Bottom">
-            <img width="100%" height="200px" src={bookshelf} />
+            <img width="100%" height="175px" src={bookshelf} />
           </div>
         </div>
       </div>

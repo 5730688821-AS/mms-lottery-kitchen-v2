@@ -41,7 +41,7 @@ export default class AfterRegister extends Component {
         <br />
         { this.state.userType === '' ? <ProgressBar1/> : <ProgressBar2/> }
         <div className="AfterRegister-Middle">
-          { this.state.userType === '' ? <TypeSelection userType={this.state.userType} handleUserType={this.handleUserType} /> : <FillForm/> }
+          { this.state.userType === '' ? <TypeSelection userType={this.state.userType} handleUserType={this.handleUserType} /> : <FillForm userType={this.state.userType}/> }
         </div>
         <div className="Bottom">
         </div>

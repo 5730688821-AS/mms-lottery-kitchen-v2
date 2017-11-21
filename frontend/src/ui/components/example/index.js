@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, NavbarBrand } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, NavbarBrand, FormFeedback } from 'reactstrap';
 import TopComponent from '../TopComponent';
 import './style.css';
 
@@ -9,18 +9,12 @@ export default class login extends Component {
     return (
       <div className="Login"  >
         <Form>
-        <h1 className="display-3">TutorS</h1>
-          <FormGroup>
-            <Label className="my-2" for="exampleusername">Username</Label>{' '}
-            <Input type="username" name="" id="exampleUsername" placeholder="enter your username" />
-          </FormGroup>
-          {' '}
-          <FormGroup>
-            <Label className="my-2" for="examplePassword">Password</Label>{' '}
-            <Input type="password" name="password" id="examplePassword" placeholder="enter your username" />
-          </FormGroup>
-          {' '}
-          <Button color="success">Login</Button>
+        <FormGroup>
+        <Label for="examplePassword">Input with danger</Label>
+        <Input valid={false} />
+        <FormFeedback>Oh noes! that name is already taken</FormFeedback>
+        <FormText>Example help text that remains unchanged.</FormText>
+      </FormGroup>
         </Form> 
       </div>
     )

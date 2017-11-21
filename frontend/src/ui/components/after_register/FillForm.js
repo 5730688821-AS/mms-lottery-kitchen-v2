@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Container, Row, Col, FormGroup, Input, Label, Button } from 'reactstrap';
 
+import FillFormTutor from './FillFormTutor';
+import FillFormLearner from './FillFormLearner';
+
 export default class FillForm extends Component{
     constructor(){
         super();
@@ -36,7 +39,7 @@ export default class FillForm extends Component{
                         <Col xs ='4'>
                             วันเกิด<Input type="datetime" name="birthdate" id="birthdate" placeholder="วว/ดด/ปปปป (พ.ศ.)" />
                         </Col>
-                        <Col xs ='4'>
+                        <Col xs ='2'>
                             เพศ<Input type="select" name="gender" id="gender">
                                 <option>ชาย</option>
                                 <option>หญิง</option>
@@ -53,7 +56,6 @@ export default class FillForm extends Component{
                     <Row>
                         <Col xs ='4'>
                             อีเมลล์*<Input type="text" name="email" id="email" placeholder="สามารถใช้ เหมือน/ต่าง กับบัญชีผู้ใช้ได้" />
-                            
                         </Col>
                         <Col xs ='3'>
                             หมายเลขโทรศัพท์*<Input type="text" name="tel" id="tel" placeholder="ใส่โดยไม่ต้องมีขีด" />
@@ -65,6 +67,9 @@ export default class FillForm extends Component{
                             LINE ID<Input type="text" name="line" id="line" placeholder="@lineid (ไม่จำเป็น)" />
                         </Col>
                     </Row>
+                    <br />
+                    <br />
+                    { this.props.userType === 'tutor' ? <FillFormTutor /> :<FillFormLearner/> }
                 <br />
                 <br />
                 <br />
@@ -86,7 +91,6 @@ export default class FillForm extends Component{
                 </Col>
                 <Col xs = '4'/> 
               </Row>
-            
             </FormGroup>
             </Container>
           )
