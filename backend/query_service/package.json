@@ -6,6 +6,7 @@
   "dependencies": {
     "bcrypt": "1.0.3",
     "cors": "^2.8.4",
+    "crypto": "^1.0.1",
     "express": "^4.16.2",
     "mongodb": "latest",
     "nodemon": "^1.12.1"

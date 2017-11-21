@@ -1,0 +1,6 @@
+[
+    {
+        "username": "admin",
+        "token": "this is 256 bit super secure token!"
+    }
+]
