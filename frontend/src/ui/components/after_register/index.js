@@ -13,16 +13,35 @@ import FillForm from './FillForm';
 import { Link } from 'react-router-dom'
 
 export default class AfterRegister extends Component {
+  constructor(){
+    super();
+    this.handleUserType=this.handleUserType.bind(this)
+    this.state = {
+      userType: '',
+    }
+  }
+
+  handleUserType(e){
+    if(e.target.id === 'tutor'){
+      this.setState({
+        userType: 'tutor'
+      })
+    } else if(e.target.id === 'learner'){
+      this.setState({
+        userType: 'learner'
+      })
+    }
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className="AfterRegister">
         <TopComponent />
         <br />
-        <ProgressBar1/>
-        {/* <ProgressBar2/> */}
+        { this.state.userType === '' ? <ProgressBar1/> : <ProgressBar2/> }
         <div className="AfterRegister-Middle">
-          <TypeSelection/>
-          {/* <FillForm/> */}
+          { this.state.userType === '' ? <TypeSelection userType={this.state.userType} handleUserType={this.handleUserType} /> : <FillForm/> }
         </div>
         <div className="Bottom">
         </div>

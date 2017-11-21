@@ -6,9 +6,6 @@ import tutor from '../../materials/tutor.jpg';
 import learner from '../../materials/learner.jpg';
 
 export default class TypeSelection extends Component{
-    constructor(){
-        super();
-    }
     render(){
         console.log(this.props)
         return(
@@ -34,7 +31,7 @@ export default class TypeSelection extends Component{
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - สามารถ<b>สร้าง</b>ประกาศการสอนได้ <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - สามารถ<b>รับรีวิว</b>จากผู้เรียนได้ <br />
                         <br />
-                        <center><Button outline color="success">สมัครเป็นผู้สอน</Button></center>
+                        <center><Button onClick={this.props.handleUserType} outline id='tutor' color="success">สมัครเป็นผู้สอน</Button></center>
                       </Col>
                       <Col xs ='1'/>
                     </Row>
@@ -59,7 +56,7 @@ export default class TypeSelection extends Component{
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - สามารถ<b>จอง</b>ประกาศการสอนได้ <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - สามารถ<b>ให้รีวิว</b>กับผู้สอนได้ <br />
                         <br />
-                        <center><Button outline color="primary">สมัครเป็นผู้เรียน</Button></center>
+                        <center><Button onClick={this.props.handleUserType} outline id='learner' color="primary">สมัครเป็นผู้เรียน</Button></center>
                       </Col>
                       <Col xs ='1'/>
                     </Row>

@@ -70,8 +70,10 @@ class TopComponent extends Component {
                             />
                         </Form>
                         <NavbarBrand href='#' onClick={this.handleOnClick}><font id='search' size ='3' color ='#c8c9cb'> &nbsp;&nbsp;&nbsp; Search </font></NavbarBrand>
-                        <NavbarBrand href='#' onClick={this.handleOnClick}><font id='login' size ='3' color ='#c8c9cb'> &nbsp;&nbsp;&nbsp; Login </font></NavbarBrand>
-                        <NavbarBrand href='#' onClick={this.handleOnClick}><font id='register' size ='3' color ='#c8c9cb'> &nbsp;&nbsp;&nbsp; Register </font></NavbarBrand>
+                        <Nav className='mr-2'>
+                            <NavbarBrand href='#' onClick={this.handleOnClick}><font id='login' size ='3' color ='#c8c9cb'> &nbsp;&nbsp;&nbsp; Login </font></NavbarBrand>
+                            <NavbarBrand href='#' onClick={this.handleOnClick}><font id='register' size ='3' color ='#c8c9cb'> &nbsp;&nbsp;&nbsp; Register </font></NavbarBrand>
+                        </Nav>
                     </Row>
                     </Col>
                 </Row>

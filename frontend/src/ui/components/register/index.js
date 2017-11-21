@@ -18,11 +18,13 @@ export default class Register extends Component {
     this.state = {
       email: '',
       password: '',
+      confirmPassword: '',
       isValid: false,
       isChecked: false,
     }
     this.handleEmail=this.handleEmail.bind(this);
     this.handlePassword=this.handlePassword.bind(this);
+    this.handleConfirmPassword=this.handleConfirmPassword.bind(this);
     this.toggle=this.toggle.bind(this);
     this.handleCreateAccount=this.handleCreateAccount.bind(this);
   }
@@ -44,6 +46,12 @@ export default class Register extends Component {
   handlePassword(e){
     this.setState({
       password: e.target.value
+    })
+  }
+
+  handleConfirmPassword(e){
+    this.setState({
+      confirmPassword: e.target.value
     })
   }
 
@@ -89,42 +97,55 @@ export default class Register extends Component {
               <FormGroup>
                 <h5> กรุณากรอกข้อมูลบัญชี </h5>
                 <div className="RegForm">
-                <Label>Email</Label>
-                <Input style={this.state.email.length > 5 ? (regEx.test(this.state.email) ? this.state.isValid ? {borderColor: '#23a13f'} : {borderColor: '#da3749'} : {borderColor: '#fdc02f'}) : null}
-                  onChange={this.handleEmail}
-                  type="email"
-                  name="email"
-                  id="id"
-                  value={this.state.email}
-                  placeholder="กรุณาใส่อีเมลล์ที่มีอยู่จริง"
-                />
-                <FormFeedback>testtt</FormFeedback>
-                <br />
-                <Label>Password</Label>
-                <Input
-                  style={this.state.password.length === 0 ? null : this.state.password.length >= 8 ? {borderColor: '#23a13f'} : {borderColor: '#fdc02f'}}
-                  onChange={this.handlePassword}
-                  type="password"
-                  name="password"
-                  id="pw"
-                  value={this.state.password}
-                  placeholder="ความยาวมากกว่า 8 ตัวอักษร"
-                />
-                <br />
-                <Row>
-                  <Col xs = '6'>
-                    <Label check>
-                      <Input type="checkbox" onClick={this.toggle} checked={this.state.isChecked} />{' '}{' '}
-                        ยอมรับข้อกำหนด<br />
-                        การให้บริการ
-                      </Label>
+                  <Label>Email</Label>
+                  <Input style={this.state.email.length > 5 ? (regEx.test(this.state.email) ? (this.state.isValid ? {borderColor: '#23a13f'} : {borderColor: '#da3749'}) : {borderColor: '#fdc02f'}) : null}
+                    onChange={this.handleEmail}
+                    type="email"
+                    name="email"
+                    id="id"
+                    value={this.state.email}
+                    placeholder="กรุณาใส่อีเมลล์ที่มีอยู่จริง"
+                  />
+                  <FormFeedback style={{fontSize: '0.7em'}}>{this.state.email.length > 5 ? (regEx.test(this.state.email) ? (this.state.isValid ? 'สามารถใช้ไอดีนี้ได้' : 'ไอดีถูกใช้แล้ว') : 'กรุณากรอก E-mail ให้ถูกแบบฟอร์ม') : ''}</FormFeedback>
+                  <br />
+                  <Label>Password</Label>
+                  <Input
+                    style={this.state.password.length === 0 ? null : this.state.password.length >= 8 ? {borderColor: '#23a13f'} : {borderColor: '#fdc02f'}}
+                    onChange={this.handlePassword}
+                    type="password"
+                    name="password"
+                    id="pw"
+                    value={this.state.password}
+                    placeholder="ความยาวอย่างน้อย 8 ตัวอักษร"
+                  />
+                  <FormFeedback style={{fontSize: '0.7em'}}>{this.state.password.length === 0 ? null : this.state.password.length >= 8 ? null : 'รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร'}</FormFeedback>
+                  <br />
+                  <Label>Confirm Password</Label>
+                  <Input
+                    style={this.state.confirmPassword.length === 0 ? null : this.state.password === this.state.confirmPassword ? {borderColor: '#23a13f'} : {borderColor: '#fdc02f'}}
+                    onChange={this.handleConfirmPassword}
+                    type="password"
+                    name="password"
+                    id="pw"
+                    value={this.state.confirmPassword}
+                    placeholder="ความยาวอย่างน้อย 8 ตัวอักษร"
+                  />
+                  <FormFeedback style={{fontSize: '0.7em'}}>{this.state.confirmPassword.length <= 4 ? null : this.state.password === this.state.confirmPassword ? null : 'กรุณากรอกรหัสผ่านให้ตรงกับรหัสผ่านข้างต้น'}</FormFeedback>
+                  <br />
+                  <Row>
+                    <Col xs = '6'>
+                      <Label check>
+                        <Input type="checkbox" onClick={this.toggle} checked={this.state.isChecked} />{' '}{' '}
+                          ยอมรับข้อกำหนด<br />
+                          การให้บริการ
+                        </Label>
 
-                  </Col>
-                  <Col xs = '6'>
-                    <Button onClick={this.handleCreateAccount} disabled={!(this.state.isChecked && this.state.isValid && this.state.password.length>=8)} outline color="primary">สมัครใช้บริการ</Button>
-                  </Col> 
-                </Row>
-              </div>
+                    </Col>
+                    <Col xs = '6'>
+                      <Button onClick={this.handleCreateAccount} disabled={!(this.state.isChecked && this.state.isValid && this.state.password.length>=8 && (this.state.password === this.state.confirmPassword))} outline color="primary">สมัครใช้บริการ</Button>
+                    </Col> 
+                  </Row>
+                </div>
               </FormGroup>
             </Col>
             </Row>
