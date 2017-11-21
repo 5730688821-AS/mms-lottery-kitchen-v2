@@ -16,16 +16,16 @@ export default class FillFormLearner extends Component{
                  <br />
                  <Row>
                      <Col xs ='3'>
-                         ชื่อสถานศึกษา*<Input type="text" name="school_th" id="school_th" placeholder="ภาษาไทย" />
+                         ชื่อสถานศึกษา*<Input value={this.props.state.school_th} onChange={this.props.handleState} type="text" name="school_th" id="school_th" placeholder="ภาษาไทย" />
                      </Col>
                      <Col xs ='3'>
-                        <br/><Input type="text" name="school_en" id="school_en" placeholder="ภาษาอังกฤษ" />
+                        <br/><Input value={this.props.state.school_en} onChange={this.props.handleState} type="text" name="school_en" id="school_en" placeholder="ภาษาอังกฤษ" />
                      </Col>
                      <Col xs ='2'>
-                         ระดับการศึกษา*<Input type="text" name="year" id="year" placeholder="ex. ม.6" />
+                         ระดับการศึกษา*<Input value={this.props.state.year} onChange={this.props.handleState} type="text" name="year" id="year" placeholder="ex. ม.6" />
                      </Col>
                      <Col xs ='3'>
-                         จังหวัด*<Input type="datetime" name="province" id="province" placeholder="ex. กรุงเทพฯ" />
+                         จังหวัด*<Input value={this.props.state.province} onChange={this.props.handleState} type="datetime" name="province" id="province" placeholder="ex. กรุงเทพฯ" />
                      </Col>
                  </Row>
                  <br />
